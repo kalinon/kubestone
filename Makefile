@@ -1,6 +1,6 @@
 
 # Image URL to use all building/pushing image targets
-IMG ?= kubestone:latest
+IMG ?= diamantisolutions/kubestone:latest
 
 API_VERSION ?= "v1alpha1"
 
