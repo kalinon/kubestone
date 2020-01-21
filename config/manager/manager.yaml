@@ -27,7 +27,7 @@ spec:
         - /manager
         args:
         - --enable-leader-election
-        image: xridge/kubestone:latest
+        image: diamantisolutions/kubestone:latest
         name: manager
         resources:
           limits:
