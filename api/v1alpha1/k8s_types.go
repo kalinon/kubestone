@@ -111,7 +111,7 @@ type PodConfigurationSpec struct {
 	// queryable and should be preserved when modifying objects.
 	// More info: http://kubernetes.io/docs/user-guide/annotations
 	// +optional
-	PodAnnotations map[string]string `json:"podAnnotations,omitempty"`
+	Annotations map[string]string `json:"annotations,omitempty"`
 
 	// PodLabels are added to the pod as labels.
 	// +optional

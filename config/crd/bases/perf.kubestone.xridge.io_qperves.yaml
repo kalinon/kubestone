@@ -44,11 +44,7 @@ spec:
               description: ClientConfiguration contains the configuration of the qperf
                 client
               properties:
-                hostNetwork:
-                  description: HostNetwork requested for the qperf pod, if enabled
-                    the hosts network namespace is used. Default to false.
-                  type: boolean
-                podAnnotations:
+                annotations:
                   additionalProperties:
                     type: string
                   description: 'Annotations is an unstructured key value map stored
@@ -56,6 +52,10 @@ spec:
                     retrieve arbitrary metadata. They are not queryable and should
                     be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations'
                   type: object
+                hostNetwork:
+                  description: HostNetwork requested for the qperf pod, if enabled
+                    the hosts network namespace is used. Default to false.
+                  type: boolean
                 podLabels:
                   additionalProperties:
                     type: string
@@ -797,11 +797,7 @@ spec:
               description: ServerConfiguration contains the configuration of the qperf
                 server
               properties:
-                hostNetwork:
-                  description: HostNetwork requested for the qperf pod, if enabled
-                    the hosts network namespace is used. Default to false.
-                  type: boolean
-                podAnnotations:
+                annotations:
                   additionalProperties:
                     type: string
                   description: 'Annotations is an unstructured key value map stored
@@ -809,6 +805,10 @@ spec:
                     retrieve arbitrary metadata. They are not queryable and should
                     be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations'
                   type: object
+                hostNetwork:
+                  description: HostNetwork requested for the qperf pod, if enabled
+                    the hosts network namespace is used. Default to false.
+                  type: boolean
                 podLabels:
                   additionalProperties:
                     type: string

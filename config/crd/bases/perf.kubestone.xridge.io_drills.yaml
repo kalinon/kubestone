@@ -83,7 +83,7 @@ spec:
                 pod, including pod labels and scheduling policies (affinity, toleration,
                 node selector...)
               properties:
-                podAnnotations:
+                annotations:
                   additionalProperties:
                     type: string
                   description: 'Annotations is an unstructured key value map stored
