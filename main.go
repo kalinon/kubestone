@@ -20,8 +20,6 @@ import (
 	"flag"
 	"os"
 
-	"github.com/xridge/kubestone/controllers/ycsbbench"
-
 	"github.com/go-logr/zapr"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/client-go/kubernetes"
@@ -35,9 +33,12 @@ import (
 	"github.com/xridge/kubestone/controllers/fio"
 	"github.com/xridge/kubestone/controllers/ioping"
 	"github.com/xridge/kubestone/controllers/iperf3"
+	"github.com/xridge/kubestone/controllers/ocplogtest"
 	"github.com/xridge/kubestone/controllers/pgbench"
 	"github.com/xridge/kubestone/controllers/qperf"
 	"github.com/xridge/kubestone/controllers/sysbench"
+	"github.com/xridge/kubestone/controllers/ycsbbench"
+
 	"github.com/xridge/kubestone/pkg/k8s"
 	// +kubebuilder:scaffold:imports
 )
@@ -140,6 +141,13 @@ func main() {
 		Log: ctrl.Log.WithName("controllers").WithName("YcsbBench"),
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "YcsbBench")
+		os.Exit(1)
+	}
+	if err = (&ocplogtest.Reconciler{
+		K8S: k8sAccess,
+		Log: ctrl.Log.WithName("controllers").WithName("OcpLogtest"),
+	}).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "OcpLogtest")
 		os.Exit(1)
 	}
 	// +kubebuilder:scaffold:builder
