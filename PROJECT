@@ -32,3 +32,6 @@ resources:
 - group: perf
   kind: KafkaBench
   version: v1alpha1
+- group: perf
+  kind: S3Bench
+  version: v1alpha1
