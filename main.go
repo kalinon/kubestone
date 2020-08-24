@@ -18,6 +18,7 @@ package main
 
 import (
 	"flag"
+	"github.com/xridge/kubestone/controllers/esrally"
 	"os"
 
 	"github.com/go-logr/zapr"
@@ -157,6 +158,20 @@ func main() {
 		Log: ctrl.Log.WithName("controllers").WithName("OcpLogtest"),
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "OcpLogtest")
+		os.Exit(1)
+	}
+	if err = (&esrally.Reconciler{
+		K8S: k8sAccess,
+		Log: ctrl.Log.WithName("controllers").WithName("EsRally"),
+	}).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "EsRally")
+		os.Exit(1)
+	}
+	if err = (&s3bench.Reconciler{
+		K8S: k8sAccess,
+		Log: ctrl.Log.WithName("controllers").WithName("S3Bench"),
+	}).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "S3Bench")
 		os.Exit(1)
 	}
 
